@@ -16,7 +16,7 @@ find_package(Qt5 COMPONENTS
         SerialPort
         REQUIRED)
 
-add_executable(tcpudp main.cpp tcpclient.h tcpclient.cpp tcpserver.h tcpserver.cpp)
+add_executable(tcpudp main.cpp tcp/tcpclient.h tcp/tcpclient.cpp tcp/tcpserver.h tcp/tcpserver.cpp udp/udpreceiver.h udp/udpreceiver.cpp configReader/configReader.cpp configReader/configReader.h)
 target_link_libraries(tcpudp
         Qt5::Core
         Qt5::Gui

@@ -1,7 +1,9 @@
 {
   "udp": {
     "host": "127.0.0.1",
-    "port": 5000
+    "port": 5000,
+    "waiting_time" : 10,
+    "size" : 10
   },
   "tcp": {
     "host": "127.0.0.1",

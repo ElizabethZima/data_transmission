@@ -2,7 +2,6 @@
 #include <QByteArray>
 #include <QHostAddress>
 #include <iostream>
-#include "tcpserver.h"
 
 const extern quint16 PORT;
 

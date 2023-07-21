@@ -1,13 +1,23 @@
 #include <QCoreApplication>
 #include <QDebug>
+#include <QTime>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFile>
 #include <iostream>
-#include "tcpclient.h"
-#include "tcpserver.h"
+#include "tcp/tcpclient.h"
+#include "tcp/tcpserver.h"
+#include "udp/udpreceiver.h"
 
 const extern quint16 PORT = 5000;
+
+void delay()
+{
+    QTime dieTime= QTime::currentTime().addSecs(1);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+
 
 
 void readJsonFile(const QString& filePath) {
@@ -43,8 +53,6 @@ void readJsonFile(const QString& filePath) {
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
 
- //   PORT = 5000;
-
     readJsonFile("C:/Users/Студент/CLionProjects/tcpudp/config.json");
 
     ///TCP ///
@@ -53,6 +61,31 @@ int main(int argc, char *argv[]) {
 
     std::cout << "--- TCP Server ---" << std::endl;
     TcpServer ts;
+
+    delay();
+
+    ///UDP///
+
+
+
+
+    UdpReceiver ur;
+
+    QUdpSocket qus;
+
+    qus.bind(QHostAddress("127.0.0.1"), PORT+1);
+
+    QByteArray msg = "Hello world!";
+
+    std::cout << "--- Sender ---" << std::endl;
+
+    for(int i = 0; i < 10; ++i)
+        qus.writeDatagram(msg, QHostAddress("127.0.0.1"), PORT);
+
+
+    std::cout << "--- Recevier ---" << std::endl;
+
+
 
 
     return QCoreApplication::exec();
