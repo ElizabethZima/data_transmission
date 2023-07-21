@@ -4,7 +4,7 @@
 #include <iostream>
 #include "tcpserver.h"
 
-const quint16 PORT = 2333;
+const extern quint16 PORT;
 
 TcpServer::TcpServer(QTcpServer *p) :
         QTcpServer(p)

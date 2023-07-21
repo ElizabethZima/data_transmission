@@ -3,9 +3,8 @@
 #include <QHostAddress>
 #include <QTcpSocket>
 #include <iostream>
-#include "tcpclient.h"
 
-const quint16 PORT = 2333;
+const extern quint16 PORT;
 
 TcpClient::TcpClient(QObject *p) :
         QObject(p)
