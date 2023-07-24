@@ -1,7 +1,7 @@
 #ifndef TCPUDP_CONFIGREADER_H
 #define TCPUDP_CONFIGREADER_H
 
-
+#include <iostream>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFile>
@@ -9,7 +9,46 @@
 
 class configReader {
 
-public :
+private :
+
+
+    static void readJson(QJsonObject jsonObject) {
+
+
+        if (jsonObject.contains("config")) {
+            QJsonObject confObject = jsonObject["config"].toObject();
+            int count = confObject["count"].toInt();
+            std::cout << count;
+        }
+        else{
+            std::cout << "wrong config information\n";
+            return;
+        }
+
+
+//
+//        if (jsonObject.contains("udp")) {
+//            QJsonObject udpObject = jsonObject["udp"].toObject();
+//            QString host = udpObject["host"].toString();
+//            int port= udpObject["port"].toInt();
+//
+//            qDebug() << "UDP Host: " << host;
+//            qDebug() << "UDP Port: " << port;
+//        }
+//
+//        if (jsonObject.contains("tcp")) {
+//            QJsonObject udpObject = jsonObject["tcp"].toObject();
+//            QString host = udpObject["host"].toString();
+//            int port = udpObject["port"].toInt();
+//
+//            qDebug() << "UDP Host: " << host;
+//            qDebug() << "UDP Port: " << port;
+//        }
+
+    }
+
+public:
+
     static void print(const QString& filePath){
 
         QFile file(filePath);
@@ -30,27 +69,9 @@ public :
         // Теперь вы можете работать с данными из файла JSON
         QJsonObject jsonObject = document.object();
 
-        // Пример доступа к значениям по ключам:
-        if (jsonObject.contains("udp")) {
-            QJsonObject udpObject = jsonObject["udp"].toObject();
-            QString host = udpObject["host"].toString();
-            int port= udpObject["port"].toInt();
-
-            qDebug() << "UDP Host: " << host;
-            qDebug() << "UDP Port: " << port;
-        }
-
-        if (jsonObject.contains("tcp")) {
-            QJsonObject udpObject = jsonObject["tcp"].toObject();
-            QString host = udpObject["host"].toString();
-            int port = udpObject["port"].toInt();
-
-            qDebug() << "UDP Host: " << host;
-            qDebug() << "UDP Port: " << port;
-        }
+        readJson(jsonObject);
     }
 
 };
-
 
 #endif //TCPUDP_CONFIGREADER_H
