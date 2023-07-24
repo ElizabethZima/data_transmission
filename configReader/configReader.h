@@ -76,8 +76,10 @@ private :
                 std::cout << "--- TCP Client ---" << std::endl;
                 TcpClient tc(port);
 
+
                 std::cout << "--- TCP Server ---" << std::endl;
                 TcpServer ts(port);
+                ts.read_and_reply();
             }
 
         }
