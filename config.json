@@ -1,17 +1,21 @@
 { "config" : {
-  "count" : 20
+  "count" : 2
   },
 
-  "udp": {
-    "host": "127.0.0.1",
-    "port": 5000,
-    "waiting_time" : 10,
-    "size" : 10
+  "0": {
+    "udp" : {
+      "host": "127.0.0.1",
+      "port": 5000,
+      "waiting_time": 10,
+      "size": 10
+    }
   },
 
-  "tcp": {
-    "host": "127.0.0.1",
-    "port": 8080,
-    "timeout_seconds": 10
+  "1": {
+    "tcp" : {
+      "host": "127.0.0.1",
+      "port": 8080,
+      "timeout_seconds": 10
+    }
   }
 }
