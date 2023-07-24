@@ -3,7 +3,7 @@
 #include <iostream>
 extern const quint16 PORT;
 
-UdpReceiver::UdpReceiver(QObject *p) :
+UdpReceiver::UdpReceiver( QObject *p) :
 
 QObject(p){
 

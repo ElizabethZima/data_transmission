@@ -4,7 +4,7 @@
 #include <iostream>
 #include "tcp/tcpclient.h"
 #include "tcp/tcpserver.h"
-#include "udp/udpreceiver.h"
+//#include "udp/udpreceiver.h"
 #include "configReader/configReader.h"
 
 const extern quint16 PORT = 5000;
@@ -21,12 +21,6 @@ int main(int argc, char *argv[]) {
 
     configReader::print("C:/Users/Студент/CLionProjects/tcpudp/config.json");
 
-//    ///TCP ///
-//    std::cout << "--- TCP Client ---" << std::endl;
-//    TcpClient tc;
-//
-//    std::cout << "--- TCP Server ---" << std::endl;
-//    TcpServer ts;
 //
 //    delay();
 

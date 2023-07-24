@@ -3,9 +3,8 @@
 #include <QHostAddress>
 #include <iostream>
 
-const extern quint16 PORT;
 
-TcpServer::TcpServer(QTcpServer *p) :
+TcpServer::TcpServer(quint16 PORT, QTcpServer *p) :
         QTcpServer(p)
 {
     tServer = new QTcpServer;

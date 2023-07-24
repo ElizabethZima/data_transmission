@@ -66,10 +66,18 @@ private :
 
                 QJsonObject tcpObject = newObject["tcp"].toObject();
                 QString host = tcpObject["host"].toString();
-                int port = tcpObject["port"].toInt();
+                qint16 port = tcpObject["port"].toInt();
 
                 qDebug() << "TCP Host: " << host;
                 qDebug() << "TCP Port: " << port;
+
+
+                ///TCP ///
+                std::cout << "--- TCP Client ---" << std::endl;
+                TcpClient tc(port);
+
+                std::cout << "--- TCP Server ---" << std::endl;
+                TcpServer ts(port);
             }
 
         }

@@ -9,7 +9,7 @@ class TcpServer : QTcpServer
 Q_OBJECT
 
 public:
-    TcpServer(QTcpServer *p = 0);
+    TcpServer(quint16 PORT, QTcpServer *p = 0);
     ~TcpServer();
 
 public slots:

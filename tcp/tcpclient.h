@@ -9,7 +9,7 @@ class TcpClient : public QObject
 Q_OBJECT
 
 public:
-    TcpClient(QObject *p = nullptr);
+    TcpClient(quint16 PORT, QObject *p = nullptr);
     ~TcpClient();
 
 public slots:

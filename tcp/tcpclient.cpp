@@ -4,9 +4,9 @@
 #include <QTcpSocket>
 #include <iostream>
 
-const extern quint16 PORT;
 
-TcpClient::TcpClient(QObject *p) :
+
+TcpClient::TcpClient(quint16 PORT, QObject *p) :
         QObject(p)
 {
     tSocket = new QTcpSocket(this);
