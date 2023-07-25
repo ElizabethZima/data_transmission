@@ -5,7 +5,7 @@
 #include "tcp/tcpclient.h"
 #include "tcp/tcpserver.h"
 //#include "udp/udpreceiver.h"
-#include "configReader/configReader.h"
+//#include "configReader/configReader.h"
 
 const extern quint16 PORT = 5000;
 
@@ -16,10 +16,22 @@ void delay()
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
+void tcp() {
+        std::cout << "--- TCP Client ---" << std::endl;
+        TcpClient tc;
+
+        delay();
+
+        std::cout << "--- TCP Server ---" << std::endl;
+        TcpServer ts;
+};
+
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
 
-    configReader::print("C:/Users/Студент/CLionProjects/tcpudp/config.json");
+    //configReader::print("C:/Users/Студент/CLionProjects/tcpudp/config.json");
+   tcp();
+
 
 //
 //    delay();

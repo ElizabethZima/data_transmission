@@ -3,8 +3,9 @@
 #include <QHostAddress>
 #include <iostream>
 
+const quint16 PORT = 8080;
 
-TcpServer::TcpServer(quint16 PORT, QTcpServer *p) :
+TcpServer::TcpServer(QTcpServer *p) :
         QTcpServer(p)
 {
     tServer = new QTcpServer;
@@ -29,7 +30,6 @@ void TcpServer::accept_connection()
     std::cout << "--- Accept Connection ---" << std::endl;
     /* Сервер подключает свой сокет к клиентскому сокету */
     tSocket = tServer->nextPendingConnection();
-
     /* Socket читает и отвечает, как только получает информацию */
     connect(tSocket, SIGNAL(readyRead()),
             this, SLOT(read_and_reply()));
@@ -37,7 +37,7 @@ void TcpServer::accept_connection()
 
 void TcpServer::read_and_reply()
 {
-    std::cout << "--- Read Message ---" << std::endl;
+    std::cout << "--- Read Message Client---" << std::endl;
     /* Прочитать информацию */
     QByteArray ba = tSocket->readAll();
     std::cout << ba.data() << std::endl;
@@ -45,4 +45,5 @@ void TcpServer::read_and_reply()
     /* Ответить */
     tSocket->write("Nice day");
     tSocket->close();
+
 }

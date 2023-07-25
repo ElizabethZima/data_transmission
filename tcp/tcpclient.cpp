@@ -3,10 +3,11 @@
 #include <QHostAddress>
 #include <QTcpSocket>
 #include <iostream>
+#include "tcpclient.h"
 
+const quint16 PORT = 8080;
 
-
-TcpClient::TcpClient(quint16 PORT, QObject *p) :
+TcpClient::TcpClient(QObject *p) :
         QObject(p)
 {
     tSocket = new QTcpSocket(this);
@@ -19,7 +20,7 @@ TcpClient::TcpClient(quint16 PORT, QObject *p) :
     /* сервер читает, если отвечает */
     connect(tSocket, SIGNAL(readyRead()),this, SLOT(read_msg()));
     /* сервер отправляет запрос при разрыве соединения */
-    connect(tSocket, SIGNAL(disconnected()),this, SLOT(end_connent()));
+    connect(tSocket, SIGNAL(disconnected()),this, SLOT(end_connect()));
 }
 
 TcpClient::~TcpClient()
@@ -44,7 +45,7 @@ void TcpClient::read_msg()
     std::cout << ba.data() << std::endl;
 }
 
-void TcpClient::end_connent()
+void TcpClient::end_connect()
 {
     std::cout << "--- Connection Ended ---" << std::endl;
 }

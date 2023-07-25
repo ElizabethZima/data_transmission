@@ -1,5 +1,6 @@
-#ifndef TCP_TCPSERVER_H
-#define TCP_TCPSERVER_H
+#ifndef TCP2_TCPSERVER_H
+#define TCP2_TCPSERVER_H
+
 
 #include <QTcpServer>
 #include <QTcpSocket>
@@ -9,7 +10,7 @@ class TcpServer : QTcpServer
 Q_OBJECT
 
 public:
-    TcpServer(quint16 PORT, QTcpServer *p = 0);
+    TcpServer(QTcpServer *p = nullptr);
     ~TcpServer();
 
 public slots:
@@ -21,4 +22,5 @@ private:
     QTcpSocket *tSocket;
 };
 
-#endif //TCP_TCPSERVER_H
+
+#endif //TCP2_TCPSERVER_H
