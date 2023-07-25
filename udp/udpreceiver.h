@@ -11,7 +11,7 @@ Q_OBJECT
 
 public:
 
-    UdpReceiver(QObject *p = nullptr);
+    UdpReceiver(quint16 PORT, QObject *p = nullptr);
 
     ~UdpReceiver() ;
 public slots:

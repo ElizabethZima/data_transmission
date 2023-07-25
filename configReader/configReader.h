@@ -8,9 +8,9 @@
 #include <QDebug>
 #include "../udp/udpreceiver.h"
 
-qint16 PORT = 8080;
 
-void udp(UdpReceiver& ur, QUdpSocket& qus ){
+
+void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT){
 
     qus.bind(QHostAddress("127.0.0.1"), PORT);
 
@@ -78,9 +78,9 @@ private :
                 qDebug() << "UDP Host: " << host;
                 qDebug() << "UDP Port: " << port;
 
-                UdpReceiver ur;
+                UdpReceiver ur(port);
                 QUdpSocket qus;
-                udp(ur, qus);
+                udp(ur, qus, port);
                 //task: add complete timer
             }
 

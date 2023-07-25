@@ -23,8 +23,6 @@ void tcp() {
         std::cout << "--- TCP Client ---" << std::endl;
         TcpClient tc;
 
-
-
         std::cout << "--- TCP Server ---" << std::endl;
         TcpServer ts;
     tc.send_msg();
