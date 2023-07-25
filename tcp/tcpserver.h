@@ -1,7 +1,6 @@
 #ifndef TCP2_TCPSERVER_H
 #define TCP2_TCPSERVER_H
 
-
 #include <QTcpServer>
 #include <QTcpSocket>
 

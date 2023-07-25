@@ -1,7 +1,7 @@
 #include "udpreceiver.h"
 #include <QByteArray>
 #include <iostream>
-extern const quint16 PORT;
+extern const quint16 PORT = 8080;
 
 UdpReceiver::UdpReceiver( QObject *p) :
 
@@ -14,8 +14,8 @@ QObject(p){
         connect(uSocket, SIGNAL(readyRead()), this, SLOT(receive()));
 }
         UdpReceiver::~UdpReceiver(){
-
-    delete uSocket;
+std::cout << "Delete receiver ";
+        delete uSocket;
 }
 
 
@@ -38,3 +38,4 @@ QObject(p){
     }
 
 }
+

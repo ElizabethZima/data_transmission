@@ -17,7 +17,7 @@ public:
 public slots:
     void send_msg(); // отправляем сообщение на сервер
     void read_msg(); // Считываем информацию, возвращаемую сервером
-    void end_connect(); // Запрос после отключения
+    static void end_connect(); // Запрос после отключения
 
 private:
     QTcpSocket *tSocket;

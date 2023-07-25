@@ -43,11 +43,11 @@ void TcpClient::read_msg()
     /* Прочитать информацию */
     QByteArray ba = tSocket->readAll();
     std::cout << ba.data() << std::endl;
-    disconnect();
+
 }
 
 void TcpClient::end_connect()
 {
-    SIGNAL(disconnected());
+
     std::cout << "--- Connection Ended ---" << std::endl;
 }

@@ -6,7 +6,25 @@
 #include <QJsonDocument>
 #include <QFile>
 #include <QDebug>
+#include "../udp/udpreceiver.h"
 
+qint16 PORT = 8080;
+
+void udp(UdpReceiver& ur, QUdpSocket& qus ){
+
+    qus.bind(QHostAddress("127.0.0.1"), PORT);
+
+    QByteArray msg = "Hello world!";
+
+    std::cout << "--- Sender ---" << std::endl;
+
+    for(int i = 0; i < 5; ++i)
+        qus.writeDatagram(msg, QHostAddress("127.0.0.1"), PORT);
+
+
+    std::cout << "--- Recevier ---" << std::endl;
+    ur.receive();
+}
 
 class configReader {
 
@@ -59,28 +77,33 @@ private :
 
                 qDebug() << "UDP Host: " << host;
                 qDebug() << "UDP Port: " << port;
+
+                UdpReceiver ur;
+                QUdpSocket qus;
+                udp(ur, qus);
+                //task: add complete timer
             }
 
             /*    parse TCP    */
 
             else if (newObject.contains("tcp")) {
 
-                QJsonObject tcpObject = newObject["tcp"].toObject();
-                QString host = tcpObject["host"].toString();
-                qint16 port = tcpObject["port"].toInt();
-
-                qDebug() << "TCP Host: " << host;
-                qDebug() << "TCP Port: " << port;
-
-
-                ///TCP ///
-                std::cout << "--- TCP Client ---" << std::endl;
-                TcpClient tc(port);
-
-
-                std::cout << "--- TCP Server ---" << std::endl;
-                TcpServer ts(port);
-                ts.read_and_reply();
+//                QJsonObject tcpObject = newObject["tcp"].toObject();
+//                QString host = tcpObject["host"].toString();
+//                qint16 port = tcpObject["port"].toInt();
+//
+//                qDebug() << "TCP Host: " << host;
+//                qDebug() << "TCP Port: " << port;
+//
+//
+//                ///TCP ///
+//                std::cout << "--- TCP Client ---" << std::endl;
+//                TcpClient tc(port);
+//
+//
+//                std::cout << "--- TCP Server ---" << std::endl;
+//                TcpServer ts(port);
+//                ts.read_and_reply();
             }
 
         }
