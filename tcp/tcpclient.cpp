@@ -3,7 +3,6 @@
 #include <QHostAddress>
 #include <QTcpSocket>
 #include <iostream>
-#include "tcpclient.h"
 
 const quint16 PORT = 8080;
 
@@ -30,6 +29,7 @@ TcpClient::~TcpClient()
 
 void TcpClient::send_msg()
 {
+    SIGNAL(connected());
     std::cout << "--- Successfully Connected ---\n"
               << "--- Sending Message ---"
               << std::endl;
@@ -43,9 +43,11 @@ void TcpClient::read_msg()
     /* Прочитать информацию */
     QByteArray ba = tSocket->readAll();
     std::cout << ba.data() << std::endl;
+    disconnect();
 }
 
 void TcpClient::end_connect()
 {
+    SIGNAL(disconnected());
     std::cout << "--- Connection Ended ---" << std::endl;
 }

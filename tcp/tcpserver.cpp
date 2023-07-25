@@ -17,6 +17,7 @@ TcpServer::TcpServer(QTcpServer *p) :
         std::cout << "*** FAIL LISTING ***" << std::endl;
     /* Обработка нового запроса на подключение */
     connect(tServer, SIGNAL(newConnection()),this, SLOT(accept_connection()));
+
 }
 
 TcpServer::~TcpServer()
@@ -31,19 +32,23 @@ void TcpServer::accept_connection()
     /* Сервер подключает свой сокет к клиентскому сокету */
     tSocket = tServer->nextPendingConnection();
     /* Socket читает и отвечает, как только получает информацию */
-    connect(tSocket, SIGNAL(readyRead()),
-            this, SLOT(read_and_reply()));
+    read_and_reply();
+
 }
 
 void TcpServer::read_and_reply()
 {
     std::cout << "--- Read Message Client---" << std::endl;
+
     /* Прочитать информацию */
     QByteArray ba = tSocket->readAll();
     std::cout << ba.data() << std::endl;
     std::cout << "--- Reply ---" << std::endl;
+
     /* Ответить */
     tSocket->write("Nice day");
     tSocket->close();
+
+    delete tSocket;
 
 }

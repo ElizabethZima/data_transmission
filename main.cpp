@@ -19,11 +19,17 @@ void delay()
 void tcp() {
         std::cout << "--- TCP Client ---" << std::endl;
         TcpClient tc;
+        tc.send_msg();
+
 
         delay();
 
         std::cout << "--- TCP Server ---" << std::endl;
         TcpServer ts;
+      //  ts.accept_connection();
+        ts.read_and_reply();
+
+        tc.end_connect();
 };
 
 int main(int argc, char *argv[]) {
