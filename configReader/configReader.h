@@ -19,7 +19,7 @@ void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
 
 
     std::cout << "--- Recevier ---" << std::endl;
-    ur.receive();
+    //ur.receive();
 }
 
 class configReader {
@@ -80,6 +80,7 @@ private :
                 UdpReceiver ur(port);
                 QUdpSocket qus;
                 udp(ur, qus, port, msg);
+                qus.close();
                 //task: add complete timer
             }
 
@@ -93,8 +94,7 @@ private :
 
                 qDebug() << "TCP Host: " << host;
                 qDebug() << "TCP Port: " << port;
-//
-//
+
 //                ///TCP ///
 //                std::cout << "--- TCP Client ---" << std::endl;
 //                TcpClient tc(port);
