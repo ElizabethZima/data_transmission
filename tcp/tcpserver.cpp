@@ -22,6 +22,7 @@ TcpServer::TcpServer(QTcpServer *p) :
 
 TcpServer::~TcpServer()
 {
+   std::cout << "--- Connection Ended Server ---";
     delete tServer;
     delete tSocket;
 }

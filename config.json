@@ -2,22 +2,8 @@
   "count" : 3
   },
 
-  "0": {
-    "udp" : {
-      "host": "127.0.0.1",
-      "port": 5000,
-      "message" : "Hello world"
-    }
-  },
-  "1": {
-    "udp" : {
-      "host": "127.0.0.1",
-      "port": 7070,
-      "message" : "Hello world 2"
-    }
-  },
 
-  "2": {
+  "0": {
     "tcp" : {
       "host": "127.0.0.1",
       "port": 7070,

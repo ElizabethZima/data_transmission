@@ -29,7 +29,7 @@ TcpClient::~TcpClient()
 
 void TcpClient::send_msg()
 {
-    SIGNAL(connected());
+
     std::cout << "--- Successfully Connected ---\n"
               << "--- Sending Message ---"
               << std::endl;
@@ -48,6 +48,5 @@ void TcpClient::read_msg()
 
 void TcpClient::end_connect()
 {
-
-    std::cout << "--- Connection Ended ---" << std::endl;
+    std::cout << "--- Connection Ended Client ---" << std::endl;
 }

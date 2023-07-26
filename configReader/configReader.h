@@ -7,6 +7,8 @@
 #include <QFile>
 #include <QDebug>
 #include "../udp/udpreceiver.h"
+#include "../tcp/tcpserver.h"
+#include "../tcp/tcpclient.h"
 
 
 void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
@@ -21,6 +23,17 @@ void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
     std::cout << "--- Recevier ---" << std::endl;
     //ur.receive();
 }
+
+void tcp() {
+    std::cout << "--- TCP Client ---" << std::endl;
+
+    std::cout << "--- TCP Server ---" << std::endl;
+//        TcpServer ts;
+//        tc.send_msg();
+//        ts.read_and_reply();
+//        tc.send_msg();
+
+};
 
 class configReader {
 
@@ -95,14 +108,11 @@ private :
                 qDebug() << "TCP Host: " << host;
                 qDebug() << "TCP Port: " << port;
 
-//                ///TCP ///
-//                std::cout << "--- TCP Client ---" << std::endl;
-//                TcpClient tc(port);
-//
-//
-//                std::cout << "--- TCP Server ---" << std::endl;
-//                TcpServer ts(port);
-//                ts.read_and_reply();
+                TcpServer ts;
+                TcpClient tc;
+                ts.read_and_reply();
+                tc.send_msg();
+
             }
 
         }
