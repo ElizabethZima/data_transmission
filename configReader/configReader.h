@@ -9,17 +9,13 @@
 #include "../udp/udpreceiver.h"
 
 
-
-void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT){
+void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
 
     qus.bind(QHostAddress("127.0.0.1"), PORT);
 
-    QByteArray msg = "Hello world!";
-
     std::cout << "--- Sender ---" << std::endl;
 
-    for(int i = 0; i < 5; ++i)
-        qus.writeDatagram(msg, QHostAddress("127.0.0.1"), PORT);
+    qus.writeDatagram(msg, QHostAddress("127.0.0.1"), PORT);
 
 
     std::cout << "--- Recevier ---" << std::endl;
@@ -75,12 +71,15 @@ private :
                 QString host = udpObject["host"].toString();
                 int port = udpObject["port"].toInt();
 
+                QByteArray msg;
+                msg.append(udpObject["message"].toString());
+
                 qDebug() << "UDP Host: " << host;
                 qDebug() << "UDP Port: " << port;
 
                 UdpReceiver ur(port);
                 QUdpSocket qus;
-                udp(ur, qus, port);
+                udp(ur, qus, port, msg);
                 //task: add complete timer
             }
 
@@ -88,12 +87,12 @@ private :
 
             else if (newObject.contains("tcp")) {
 
-//                QJsonObject tcpObject = newObject["tcp"].toObject();
-//                QString host = tcpObject["host"].toString();
-//                qint16 port = tcpObject["port"].toInt();
-//
-//                qDebug() << "TCP Host: " << host;
-//                qDebug() << "TCP Port: " << port;
+                QJsonObject tcpObject = newObject["tcp"].toObject();
+                QString host = tcpObject["host"].toString();
+                qint16 port = tcpObject["port"].toInt();
+
+                qDebug() << "TCP Host: " << host;
+                qDebug() << "TCP Port: " << port;
 //
 //
 //                ///TCP ///

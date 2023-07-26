@@ -21,13 +21,13 @@ void delay()
 
 void tcp() {
         std::cout << "--- TCP Client ---" << std::endl;
-        TcpClient tc;
+//        TcpClient tc;
 
         std::cout << "--- TCP Server ---" << std::endl;
-        TcpServer ts;
-    tc.send_msg();
-        ts.read_and_reply();
-        tc.send_msg();
+//        TcpServer ts;
+//        tc.send_msg();
+//        ts.read_and_reply();
+//        tc.send_msg();
 
 };
 

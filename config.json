@@ -6,14 +6,15 @@
     "udp" : {
       "host": "127.0.0.1",
       "port": 5000,
-      "timeout_seconds": 10
+      "message" : "Hello world"
     }
   },
   "1": {
     "udp" : {
       "host": "127.0.0.1",
       "port": 7070,
-      "timeout_seconds": 10
+      "message" : "Hello world 2"
     }
   }
+
 }

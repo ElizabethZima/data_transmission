@@ -12,7 +12,7 @@ UdpReceiver::UdpReceiver( quint16 PORT, QObject *p) :QObject(p){
 }
 
 UdpReceiver::~UdpReceiver(){
-        std::cout << "Delete receiver\n";
+        std::cout << "Delete receiver\n\n";
         delete uSocket;
 }
 
@@ -23,13 +23,10 @@ UdpReceiver::~UdpReceiver(){
 
     std::cout << " ";
 
-    while(uSocket->hasPendingDatagrams())
-
-    {
+    while(uSocket->hasPendingDatagrams()){
 
         ba.resize(uSocket->pendingDatagramSize());
-           uSocket->readDatagram(ba.data(), ba.size());
-
+        uSocket->readDatagram(ba.data(), ba.size());
 
         std::cout << ba.data() << std::endl;
 
