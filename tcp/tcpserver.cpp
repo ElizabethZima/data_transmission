@@ -50,7 +50,7 @@ void TcpServer::read_and_reply()
     std::cout << ba.data() << std::endl;
     std::cout << "--- Reply ---" << std::endl;
     /* Ответить */
-    tSocket->write("Nice day");
+    tSocket->write("Successful!");
 
     connect(tSocket, SIGNAL(disconnected()), this, SLOT(end_connect()));
 }

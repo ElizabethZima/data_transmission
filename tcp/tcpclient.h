@@ -10,7 +10,7 @@ class TcpClient : public QObject
 Q_OBJECT
 
 public:
-    TcpClient(quint16 PORT, QObject *p = nullptr);
+    TcpClient(quint16 PORT, QByteArray _data, QObject *p = nullptr);
     ~TcpClient();
 
 public slots:
@@ -20,6 +20,7 @@ public slots:
 
 private:
     QTcpSocket *tSocket;
+    QByteArray data;
 };
 
 #endif //TCP2_TCPCLIENT_H

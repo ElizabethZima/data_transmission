@@ -1,13 +1,40 @@
 { "config" : {
-  "count" : 2
+  "count" : 4
   },
   "0": {
+    "udp" : {
+      "host": "127.0.0.1",
+      "port": 5000,
+      "timeout_seconds": 1000,
+      "message" : "Hello world ghghjgjhg hhjhjhkh"
+
+    }
+  },
+  "1": {
     "tcp" : {
       "host": "127.0.0.1",
       "port": 7070,
-      "timeout_seconds": 100,
-      "message" : "Hello world 1 TCP"
+      "timeout_seconds": 1000,
+      "message" : "Hello world 1 TCP hghghj hjhkj"
+    }
+  },
+
+  "2": {
+    "udp" : {
+      "host": "127.0.0.1",
+      "port": 5070,
+      "timeout_seconds": 1000,
+      "message" : "Hello world 2222222222222222222222222222"
+
+    }
+  },
+
+  "3": {
+    "tcp" : {
+      "host": "127.0.0.1",
+      "port": 1010,
+      "timeout_seconds": 1000,
+      "message" : "Hello world 2 TCP hghghj hjhkj"
     }
   }
-
 }

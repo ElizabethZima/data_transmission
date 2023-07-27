@@ -6,8 +6,8 @@
 #include <QCoreApplication>
 
 
-TcpClient::TcpClient(quint16 PORT, QObject *p) :
-        QObject(p)
+TcpClient::TcpClient(quint16 PORT, QByteArray _data, QObject *p) :
+        QObject(p), data(_data)
 {
     tSocket = new QTcpSocket(this);
     std::cout << "--- Connect to Host ---" << std::endl;
@@ -35,7 +35,7 @@ void TcpClient::send_msg()
               << std::endl;
 
     /* Отправить сообщение */
-    tSocket->write(QByteArray("Hello world!"));
+    tSocket->write(data);
 }
 
 void TcpClient::read_msg()

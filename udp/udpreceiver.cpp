@@ -4,20 +4,20 @@
 
 UdpReceiver::UdpReceiver( quint16 PORT, QObject *p) :QObject(p){
 
-        uSocket = new QUdpSocket;
+    uSocket = new QUdpSocket;
 
-        uSocket->bind(QHostAddress("127.0.0.1"), PORT);
+    uSocket->bind(QHostAddress("127.0.0.1"), PORT);
 
-        connect(uSocket, SIGNAL(readyRead()), this, SLOT(receive()));
+    connect(uSocket, SIGNAL(readyRead()), this, SLOT(receive()));
 }
 
 UdpReceiver::~UdpReceiver(){
-        std::cout << "Delete receiver\n\n";
-        delete uSocket;
+    std::cout << "Delete receiver\n\n";
+    uSocket->deleteLater();
 }
 
 
-    void UdpReceiver::receive(){
+void UdpReceiver::receive(){
 
     QByteArray ba;
 
@@ -31,6 +31,6 @@ UdpReceiver::~UdpReceiver(){
         std::cout << ba.data() << std::endl;
 
     }
+    uSocket->close();
 
 }
-
