@@ -1,12 +1,19 @@
 { "config" : {
   "count" : 2
   },
+
   "0": {
-    "tcp" : {
+    "udp" : {
+      "host": "127.0.0.1",
+      "port": 5000,
+      "message" : "Hello world"
+    }
+  },
+  "1": {
+    "udp" : {
       "host": "127.0.0.1",
       "port": 7070,
-      "timeout_seconds": 100,
-      "message" : "Hello world 1 TCP"
+      "message" : "Hello world 2"
     }
   }
 
