@@ -23,7 +23,7 @@ void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
 
     qus.bind(QHostAddress("127.0.0.1"), PORT);
 
-    qDebug() << "--- Sender ---\n" ;
+    qDebug() << "--- Sender ---" ;
     qDebug() << msg << "\n";
 
     qus.writeDatagram(msg, QHostAddress("127.0.0.1"), PORT);
