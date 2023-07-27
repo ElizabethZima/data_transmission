@@ -1,5 +1,5 @@
 { "config" : {
-  "count" : 4
+  "count" : 3
   },
   "0": {
     "udp" : {
@@ -18,23 +18,12 @@
       "message" : "Hello world 1 TCP hghghj hjhkj"
     }
   },
-
   "2": {
-    "udp" : {
-      "host": "127.0.0.1",
-      "port": 5070,
+    "com" : {
+      "port1" : "COM1",
+      "port2" : "COM2",
       "timeout_seconds": 1000,
-      "message" : "Hello world 2222222222222222222222222222"
-
-    }
-  },
-
-  "3": {
-    "tcp" : {
-      "host": "127.0.0.1",
-      "port": 1010,
-      "timeout_seconds": 1000,
-      "message" : "Hello world 2 TCP hghghj hjhkj"
+      "message" : "Hello world from COMport"
     }
   }
 }
