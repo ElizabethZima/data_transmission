@@ -31,21 +31,6 @@ void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
     ur.receive();
 }
 
-void tcp() {
-
-//    std::cout << "--- TCP Server ---" << std::endl;
-//    TcpServer ts;
-//    ts.accept_connection();
-//
-//    std::cout << "--- TCP Client ---" << std::endl;
-//    TcpClient tc;
-//    tc.send_msg();
-//    tc.read_msg();
-
-    delay(100);
-
-};
-
 class configReader {
 
 private :
@@ -94,7 +79,7 @@ private :
                 QJsonObject udpObject = newObject["udp"].toObject();
                 QString host = udpObject["host"].toString();
                 int port = udpObject["port"].toInt();
-                qint16 delaytime = udpObject["delaytime"].toInt();
+                qint16 delaytime = udpObject["timeout_seconds"].toInt();
 
                 QByteArray msg;
                 msg.append(udpObject["message"].toString());
@@ -119,7 +104,7 @@ private :
                 QJsonObject tcpObject = newObject["tcp"].toObject();
                 QString host = tcpObject["host"].toString();
                 qint16 port = tcpObject["port"].toInt();
-                qint16 delaytime = tcpObject["delaytime"].toInt();
+                qint16 delaytime = tcpObject["timeout_seconds"].toInt();
                 QByteArray msg;
                 msg.append(tcpObject["message"].toString());
 
