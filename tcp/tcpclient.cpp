@@ -48,6 +48,6 @@ void TcpClient::read_msg()
 
 void TcpClient::end_connect()
 {
-    std::cout << "--- Connection Ended Client---" << std::endl;
+    std::cout << "--- Connection Ended Client---\n" << std::endl;
 
 }

@@ -73,7 +73,7 @@ void comport(QString port1, QString port2, QByteArray& msg){
     qDebug() << "Reading:";
     serial2.waitForReadyRead(100);
     QByteArray data = serial2.readAll();
-    qDebug() << data;
+    qDebug() << data << "\n";
 
 
     // Закрываем порт после использования
