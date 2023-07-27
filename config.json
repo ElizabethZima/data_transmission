@@ -23,7 +23,7 @@
       "port1" : "COM1",
       "port2" : "COM2",
       "timeout_seconds": 1000,
-      "message" : "Hello world from COMport"
+      "message" : "Hello world from COM-port"
     }
   }
 }
