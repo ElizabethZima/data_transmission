@@ -23,7 +23,8 @@ void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
 
     qus.bind(QHostAddress("127.0.0.1"), PORT);
 
-    std::cout << "--- Sender ---" << std::endl;
+    qDebug() << "--- Sender ---\n" ;
+    qDebug() << msg << "\n";
 
     qus.writeDatagram(msg, QHostAddress("127.0.0.1"), PORT);
 
@@ -183,7 +184,7 @@ private :
                 msg.append(comObject["message"].toString());
 
                 qDebug() << "PORT 1 : " << port1;
-                qDebug() << "PORT 2 : " << port2;
+                qDebug() << "PORT 2 : " << port2 << "\n";
                 delay(delaytime);
                 comport(port1, port2,msg);
             }
