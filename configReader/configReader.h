@@ -175,12 +175,12 @@ private :
             else if(newObject.contains("com")){
                 qDebug() << "Comport";
 
-                QJsonObject tcpObject = newObject["com"].toObject();
-                QString port1 = tcpObject["port1"].toString();
-                QString port2 = tcpObject["port2"].toString();
-                qint16 delaytime = tcpObject["timeout_seconds"].toInt();
+                QJsonObject comObject = newObject["com"].toObject();
+                QString port1 = comObject["port1"].toString();
+                QString port2 = comObject["port2"].toString();
+                qint16 delaytime = comObject["timeout_seconds"].toInt();
                 QByteArray msg;
-                msg.append(tcpObject["message"].toString());
+                msg.append(comObject["message"].toString());
 
                 qDebug() << "PORT 1 : " << port1;
                 qDebug() << "PORT 2 : " << port2;
