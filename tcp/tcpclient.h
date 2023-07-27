@@ -2,7 +2,6 @@
 #ifndef TCP2_TCPCLIENT_H
 #define TCP2_TCPCLIENT_H
 
-
 #include <QObject>
 #include <QTcpSocket>
 
@@ -11,13 +10,13 @@ class TcpClient : public QObject
 Q_OBJECT
 
 public:
-    TcpClient(QObject *p = 0);
+    TcpClient(quint16 PORT, QObject *p = nullptr);
     ~TcpClient();
 
 public slots:
     void send_msg(); // отправляем сообщение на сервер
     void read_msg(); // Считываем информацию, возвращаемую сервером
-    static void end_connect(); // Запрос после отключения
+    void end_connect(); // Запрос после отключения
 
 private:
     QTcpSocket *tSocket;

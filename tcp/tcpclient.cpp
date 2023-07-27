@@ -3,10 +3,10 @@
 #include <QHostAddress>
 #include <QTcpSocket>
 #include <iostream>
+#include <QCoreApplication>
 
-const quint16 PORT = 8080;
 
-TcpClient::TcpClient(QObject *p) :
+TcpClient::TcpClient(quint16 PORT, QObject *p) :
         QObject(p)
 {
     tSocket = new QTcpSocket(this);
@@ -24,12 +24,12 @@ TcpClient::TcpClient(QObject *p) :
 
 TcpClient::~TcpClient()
 {
-    delete tSocket;
+    tSocket->close();
+    tSocket->deleteLater();
 }
 
 void TcpClient::send_msg()
 {
-
     std::cout << "--- Successfully Connected ---\n"
               << "--- Sending Message ---"
               << std::endl;
@@ -48,5 +48,6 @@ void TcpClient::read_msg()
 
 void TcpClient::end_connect()
 {
-    std::cout << "--- Connection Ended Client ---" << std::endl;
+    std::cout << "--- Connection Ended Client---" << std::endl;
+
 }

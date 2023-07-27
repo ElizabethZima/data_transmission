@@ -1,14 +1,13 @@
 { "config" : {
-  "count" : 3
+  "count" : 2
   },
-
-
   "0": {
     "tcp" : {
       "host": "127.0.0.1",
       "port": 7070,
-      "timeout_seconds": 10,
-      "message" : "Hello world 2"
+      "timeout_seconds": 100,
+      "message" : "Hello world 1 TCP"
     }
   }
+
 }

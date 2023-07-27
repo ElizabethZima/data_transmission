@@ -3,9 +3,7 @@
 #include <QHostAddress>
 #include <iostream>
 
-const quint16 PORT = 8080;
-
-TcpServer::TcpServer(QTcpServer *p) :
+TcpServer::TcpServer(quint16 PORT, QTcpServer *p) :
         QTcpServer(p)
 {
     tServer = new QTcpServer;
@@ -15,6 +13,7 @@ TcpServer::TcpServer(QTcpServer *p) :
         std::cout << "--- Linsting to Port ---" << std::endl;
     else
         std::cout << "*** FAIL LISTING ***" << std::endl;
+
     /* Обработка нового запроса на подключение */
     connect(tServer, SIGNAL(newConnection()),this, SLOT(accept_connection()));
 
@@ -22,9 +21,11 @@ TcpServer::TcpServer(QTcpServer *p) :
 
 TcpServer::~TcpServer()
 {
-   std::cout << "--- Connection Ended Server ---";
-    delete tServer;
-    delete tSocket;
+    tSocket->close();
+    tServer->close();
+    tSocket->deleteLater();
+    tServer->deleteLater();
+
 }
 
 void TcpServer::accept_connection()
@@ -32,24 +33,30 @@ void TcpServer::accept_connection()
     std::cout << "--- Accept Connection ---" << std::endl;
     /* Сервер подключает свой сокет к клиентскому сокету */
     tSocket = tServer->nextPendingConnection();
+    tServer->setMaxPendingConnections(1);
+    tServer->waitForNewConnection(10);
+
     /* Socket читает и отвечает, как только получает информацию */
-    read_and_reply();
+    connect(tSocket, SIGNAL(readyRead()),
+            this, SLOT(read_and_reply()));
 
 }
 
 void TcpServer::read_and_reply()
 {
-    std::cout << "--- Read Message Client---" << std::endl;
-
+    std::cout << "--- Read Message ---" << std::endl;
     /* Прочитать информацию */
     QByteArray ba = tSocket->readAll();
     std::cout << ba.data() << std::endl;
     std::cout << "--- Reply ---" << std::endl;
-
     /* Ответить */
     tSocket->write("Nice day");
-    tSocket->close();
 
-    delete tSocket;
+    connect(tSocket, SIGNAL(disconnected()), this, SLOT(end_connect()));
+}
+
+void TcpServer::end_connect(){
+
+    std::cout << "--- Connection Ended Server---" << std::endl;
 
 }

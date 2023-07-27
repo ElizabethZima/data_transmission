@@ -10,8 +10,16 @@
 #include "../tcp/tcpserver.h"
 #include "../tcp/tcpclient.h"
 
+void delay(int i){
+
+    QTime dieTime= QTime::currentTime().addSecs(1);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, i);
+
+}
 
 void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
+    delay(100);
 
     qus.bind(QHostAddress("127.0.0.1"), PORT);
 
@@ -19,19 +27,22 @@ void udp(UdpReceiver& ur, QUdpSocket& qus, qint16 PORT, QByteArray& msg){
 
     qus.writeDatagram(msg, QHostAddress("127.0.0.1"), PORT);
 
-
     std::cout << "--- Recevier ---" << std::endl;
-    //ur.receive();
+
 }
 
 void tcp() {
-    std::cout << "--- TCP Client ---" << std::endl;
 
-    std::cout << "--- TCP Server ---" << std::endl;
-//        TcpServer ts;
-//        tc.send_msg();
-//        ts.read_and_reply();
-//        tc.send_msg();
+//    std::cout << "--- TCP Server ---" << std::endl;
+//    TcpServer ts;
+//    ts.accept_connection();
+//
+//    std::cout << "--- TCP Client ---" << std::endl;
+//    TcpClient tc;
+//    tc.send_msg();
+//    tc.read_msg();
+
+    delay(100);
 
 };
 
@@ -87,6 +98,7 @@ private :
                 QByteArray msg;
                 msg.append(udpObject["message"].toString());
 
+
                 qDebug() << "UDP Host: " << host;
                 qDebug() << "UDP Port: " << port;
 
@@ -94,7 +106,7 @@ private :
                 QUdpSocket qus;
                 udp(ur, qus, port, msg);
                 qus.close();
-                //task: add complete timer
+
             }
 
             /*    parse TCP    */
@@ -107,11 +119,15 @@ private :
 
                 qDebug() << "TCP Host: " << host;
                 qDebug() << "TCP Port: " << port;
+                //delay(100);
 
-                TcpServer ts;
-                TcpClient tc;
-                ts.read_and_reply();
-                tc.send_msg();
+                std::cout << "--- TCP Client ---" << std::endl;
+                TcpClient tc(port);
+
+                std::cout << "--- TCP Server ---" << std::endl;
+                TcpServer ts(port);
+
+                //delay(2000);
 
             }
 
