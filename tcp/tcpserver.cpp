@@ -57,6 +57,6 @@ void TcpServer::read_and_reply()
 
 void TcpServer::end_connect(){
 
-    std::cout << "--- Connection Ended Server---" << std::endl;
+    std::cout << "--- Connection Ended Server---\n" << std::endl;
 
 }
