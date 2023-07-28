@@ -10,6 +10,7 @@
 #include "../tcp/tcpserver.h"
 #include "../tcp/tcpclient.h"
 #include "QtSerialPort/QSerialPort"
+#include <QTime>
 
 void delay(int i){
 

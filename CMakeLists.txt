@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "C:/Qt/5.15.2/msvc2015_64/lib/cmake")
+set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.12.10/5.12.10/msvc2015_64/lib/cmake")
 
 
 find_package(Qt5 COMPONENTS

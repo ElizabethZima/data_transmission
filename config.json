@@ -1,5 +1,5 @@
 { "config" : {
-  "count" : 3
+  "count" : 4
   },
   "0": {
     "udp" : {
@@ -20,10 +20,19 @@
   },
   "2": {
     "com" : {
-      "port1" : "COM1",
-      "port2" : "COM2",
+      "port1" : "COM4",
+      "port2" : "COM5",
       "timeout_seconds": 1000,
       "message" : "Hello world from COM-port"
+    }
+  },
+
+  "3": {
+    "tcp" : {
+      "host": "127.0.0.1",
+      "port": 9090,
+      "timeout_seconds": 1000,
+      "message" : "Hello world 3 TCP hghghj hjhkj"
     }
   }
 }

@@ -12,8 +12,10 @@ UdpReceiver::UdpReceiver( quint16 PORT, QObject *p) :QObject(p){
 }
 
 UdpReceiver::~UdpReceiver(){
+
     std::cout << "Delete receiver\n\n";
     uSocket->deleteLater();
+
 }
 
 
